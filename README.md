@@ -1,16 +1,16 @@
-blankgem
+net-http-request
 --------
 
-  - [![Quality](http://img.shields.io/codeclimate/github/krainboltgreene/blankgem.gem.svg?style=flat-square)](https://codeclimate.com/github/krainboltgreene/blankgem.gem)
-  - [![Coverage](http://img.shields.io/codeclimate/coverage/github/krainboltgreene/blankgem.gem.svg?style=flat-square)](https://codeclimate.com/github/krainboltgreene/blankgem.gem)
-  - [![Build](http://img.shields.io/travis-ci/krainboltgreene/blankgem.gem.svg?style=flat-square)](https://travis-ci.org/krainboltgreene/blankgem.gem)
-  - [![Dependencies](http://img.shields.io/gemnasium/krainboltgreene/blankgem.gem.svg?style=flat-square)](https://gemnasium.com/krainboltgreene/blankgem.gem)
-  - [![Downloads](http://img.shields.io/gem/dtv/blankgem.svg?style=flat-square)](https://rubygems.org/gems/blankgem)
-  - [![Tags](http://img.shields.io/github/tag/krainboltgreene/blankgem.gem.svg?style=flat-square)](http://github.com/krainboltgreene/blankgem.gem/tags)
-  - [![Releases](http://img.shields.io/github/release/krainboltgreene/blankgem.gem.svg?style=flat-square)](http://github.com/krainboltgreene/blankgem.gem/releases)
-  - [![Issues](http://img.shields.io/github/issues/krainboltgreene/blankgem.gem.svg?style=flat-square)](http://github.com/krainboltgreene/blankgem.gem/issues)
+  - [![Quality](http://img.shields.io/codeclimate/github/krainboltgreene/net-http-request.gem.svg?style=flat-square)](https://codeclimate.com/github/krainboltgreene/net-http-request.gem)
+  - [![Coverage](http://img.shields.io/codeclimate/coverage/github/krainboltgreene/net-http-request.gem.svg?style=flat-square)](https://codeclimate.com/github/krainboltgreene/net-http-request.gem)
+  - [![Build](http://img.shields.io/travis-ci/krainboltgreene/net-http-request.gem.svg?style=flat-square)](https://travis-ci.org/krainboltgreene/net-http-request.gem)
+  - [![Dependencies](http://img.shields.io/gemnasium/krainboltgreene/net-http-request.gem.svg?style=flat-square)](https://gemnasium.com/krainboltgreene/net-http-request.gem)
+  - [![Downloads](http://img.shields.io/gem/dtv/net-http-request.svg?style=flat-square)](https://rubygems.org/gems/net-http-request)
+  - [![Tags](http://img.shields.io/github/tag/krainboltgreene/net-http-request.gem.svg?style=flat-square)](http://github.com/krainboltgreene/net-http-request.gem/tags)
+  - [![Releases](http://img.shields.io/github/release/krainboltgreene/net-http-request.gem.svg?style=flat-square)](http://github.com/krainboltgreene/net-http-request.gem/releases)
+  - [![Issues](http://img.shields.io/github/issues/krainboltgreene/net-http-request.gem.svg?style=flat-square)](http://github.com/krainboltgreene/net-http-request.gem/issues)
   - [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](http://opensource.org/licenses/MIT)
-  - [![Version](http://img.shields.io/gem/v/blankgem.svg?style=flat-square)](https://rubygems.org/gems/blankgem)
+  - [![Version](http://img.shields.io/gem/v/net-http-request.svg?style=flat-square)](https://rubygems.org/gems/net-http-request)
 
 
 TODO: Write a gem description
@@ -27,7 +27,7 @@ Installing
 
 Add this line to your application's Gemfile:
 
-    gem "blankgem", "~> 1.0"
+    gem "net-http-request", "~> 1.0"
 
 And then execute:
 
@@ -35,7 +35,7 @@ And then execute:
 
 Or install it yourself with:
 
-    $ gem install blankgem
+    $ gem install net-http-request
 
 
 Contributing

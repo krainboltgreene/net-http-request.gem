@@ -1,3 +1,157 @@
+``` ruby
+rule(:crlf) do
+
+end
+
+rule(:token) do
+
+end
+
+rule(:sp) do
+
+end
+
+rule(:digit) do
+  match['0-9']
+end
+
+rule(:escape) do
+  str('%') >> hex >> hex
+end
+
+  rule(:hex) do
+    digit | match['A-F'] | match['a-f']
+  end
+
+rule(:alpha) do
+  low_alpha | high_alpha
+end
+
+  rule(:low_alpha) do
+    match['a-z']
+  end
+
+  rule(:high_alpha) do
+    match['A-Z']
+  end
+
+rule(:safe) do
+  str('$') | str('-') | str('_') | str('.') | str('+')
+end
+
+rule(:extra) do
+  str('!') | str('*') | str("'") | str('(') | str(')') | str(',')
+end
+
+rule(:national) do
+  str('{') | str('}') | str('|') | str('\\') | str('^') | str('~') | str('[') | str(']') | str('`')
+end
+
+rule(:reserved) do
+  str(';') | str('/') | str('?') | str(':') | str('@') | str('&') | str('=')
+end
+
+rule(:punctuation) do
+  str('<') | str('>') | str('#') | str('%') | str('"')
+end
+
+rule(:unreserved) do
+  alpha | digit | safe | extra
+end
+
+rule(:pchar) do
+  uchar | str(":") | str("@") | str("&") | str("=")
+end
+
+  rule(:uchar) do
+    unreserved | escape
+  end
+
+
+rule(:network_location) do
+  (uchar | str(';') | str('?'))
+end
+
+rule(:query) do
+  (uchar | reserved).repeat
+end
+
+rule(:fragment) do
+  (uchar | reserved).repeat
+end
+
+rule(:scheme) do
+  (alpha | digit | str("+") | str("-") | str(".")).repeat(1)
+end
+
+rule(:parameter)
+
+rule(:parameters)
+
+rule()
+
+URL         = ( absoluteURL | relativeURL ) [ "#" fragment ]
+
+absoluteURL = generic-RL | ( scheme ":" *( uchar | reserved ) )
+
+generic-RL  = scheme ":" relativeURL
+
+relativeURL = net_path | abs_path | rel_path
+
+net_path    = "//" net_loc [ abs_path ]
+abs_path    = "/"  rel_path
+rel_path    = [ path ] [ ";" params ] [ "?" query ]
+
+path        = fsegment *( "/" segment )
+fsegment    = 1*pchar
+segment     =  *pchar
+
+
+
+
+
+rule(:request) do
+  request_line >>
+  ((general_header | request_header | entity_header) >> crlf).repeat(0) >>
+  crlf >>
+  message_body.maybe
+end
+
+
+  rule(:request_line) do
+    method >>
+    sp >>
+    request_uri >>
+    sp >>
+    http_version >>
+    crlf
+  end
+
+    rule(:method) do
+      str('OPTIONS') | str('GET') | str('HEAD') | str('POST') | str('PUT') | str('DELETE') | str('TRACE') | str('CONNECT') | extension_method
+    end
+
+      rule(:extension_method) do
+        token
+      end
+
+    rule(:request_uri) do
+      str('*') | absolute_uri | absolute_path | authority
+    end
+
+    rule(:http_version) do
+      str('HTTP') >>
+      str('/') >>
+      digit.repeat(1) >>
+      str('.') >>
+      digit.repeat(1)
+    end
+```
+
+
+
+
+
 net-http-request
 --------
 
@@ -95,68 +249,3 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-HTTP/1.1 200 OK
-Accept-Ranges: bytes
-Cache-Control: max-age=604800
-Content-Type: text/html
-Date: Thu, 30 Apr 2015 05:34:18 GMT
-Etag: "359670651"
-Expires: Thu, 07 May 2015 05:34:18 GMT
-Last-Modified: Fri, 09 Aug 2013 23:54:35 GMT
-Server: ECS (fty/2FA4)
-X-Cache: HIT
-x-ec-custom-error: 1
-Content-Length: 1270
-
-<!doctype html>
-<html>
-<head>
-    <title>Example Domain</title>
-
-    <meta charset="utf-8" />
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style type="text/css">
-    body {
-        background-color: #f0f0f2;
-        margin: 0;
-        padding: 0;
-        font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-
-    }
-    div {
-        width: 600px;
-        margin: 5em auto;
-        padding: 50px;
-        background-color: #fff;
-        border-radius: 1em;
-    }
-    a:link, a:visited {
-        color: #38488f;
-        text-decoration: none;
-    }
-    @media (max-width: 700px) {
-        body {
-            background-color: #fff;
-        }
-        div {
-            width: auto;
-            margin: 0 auto;
-            border-radius: 0;
-            padding: 1em;
-        }
-    }
-    </style>
-</head>
-
-<body>
-<div>
-    <h1>Example Domain</h1>
-    <p>This domain is established to be used for illustrative examples in documents. You may use this
-    domain in examples without prior coordination or asking for permission.</p>
-    <p><a href="http://www.iana.org/domains/example">More information...</a></p>
-</div>
-</body>
-</html>

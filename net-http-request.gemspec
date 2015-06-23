@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.version = Net::HTTP::Request::VERSION
   spec.authors = ["Kurtis Rainbolt-Greene"]
   spec.email = ["me@kurtisrainboltgreene.name"]
-  spec.summary = %q{TODO: Write a gem summary}
+  spec.summary = %q{A wrapper object for all HTTP requests}
   spec.description = spec.summary
   spec.homepage = "http://krainboltgreene.github.io/net-http-request"
   spec.license = "MIT"
@@ -18,6 +18,8 @@ Gem::Specification.new do |spec|
   spec.executables = Dir[File.join("bin", "**", "*")].map! { |f| f.gsub(/bin\//, "") }
   spec.test_files = Dir[File.join("test", "**", "*"), File.join("spec", "**", "*")]
   spec.require_paths = ["lib"]
+
+  spec.add_runtime_dependency "parslet"
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rspec", "~> 3.0"

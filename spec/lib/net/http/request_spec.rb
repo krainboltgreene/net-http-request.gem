@@ -1,12 +1,7 @@
 require "spec_helper"
 
 describe Net::HTTP::Request do
-  context "with GET as a verb" do
-    let("raw") do
-      "GET http://example.com\n"
-    end
-  end
-
+  context "with GET as a verb"
   context "with a path"
   context "with a subdomain"
   context "with https"

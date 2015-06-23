@@ -4,27 +4,22 @@ module Net
       class Headers
         include Enumerable
 
-        PATTERN = /(?<query>.+)?/
-
-        def initialize(headers:)
-          @raw = headers
-          @collection = headers.strip.split(Header::PATTERN)
-          @data = map do |item|
-            Header.new(header: item)
+        def initialize(raw:)
+          @raw = raw
+          @collection = @raw.map do |header|
+            Header.new(raw: item)
           end
+        end
+
+        def raw
+          @raw
         end
 
         def each(&block)
           @collection.each(&block)
         end
 
-        def collection
-          @collection
-        end
-
-        def data
-          @data
-        end
+        require_relative "headers/header"
       end
     end
   end

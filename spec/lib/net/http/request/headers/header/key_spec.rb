@@ -9,12 +9,8 @@ RSpec.describe(Net::HTTP::Request::Headers::Header::Key) do
     "#{header_key_fixture}: max-age=604800"
   end
 
-  let("match") do
-    header_fixture.match(Net::HTTP::Request::Header::PATTERN)[:key]
-  end
-
   let("key") do
-    described_class.new(key: match)
+    described_class.new(key: raw)
   end
 
   describe("#raw") do

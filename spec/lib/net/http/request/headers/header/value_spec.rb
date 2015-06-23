@@ -8,12 +8,8 @@ RSpec.describe(Net::HTTP::Request::Headers::Header::Value) do
     "Cache-Control: #{header_value_fixture}"
   end
 
-  let("match") do
-    header_fixture.match(Net::HTTP::Request::Header::PATTERN)[:value]
-  end
-
   let("value") do
-    described_class.new(value: match)
+    described_class.new(raw: raw)
   end
 
   describe("#raw") do

@@ -1,8 +1,7 @@
 module Net
   class HTTP
     class Request
-      class Schema
-
+      class Parser < Parslet::Parser
       end
     end
   end
